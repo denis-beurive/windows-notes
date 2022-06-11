@@ -45,6 +45,12 @@ dir /s /b "%HOMEPATH%" | findstr .html
 dir /s /b "%HOMEPATH%" | findstr /i .html
 ```
 
+## UNIX cat equivalent
+
+```
+type <file name>
+```
+
 ## OpenSSH sous Windows
 
 * OpenSSH for Windows: see [this link](http://sshwindows.sourceforge.net/)
