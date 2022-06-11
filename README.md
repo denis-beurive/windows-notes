@@ -27,5 +27,29 @@ GUI applications use the following code page:
 
 `1252` => `windows-1252` aka `ANSI Latin 1; Europe occidentale (Windows)`
 
+## Show environment variables
 
+```
+set
+```
+
+> * System: `reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"`
+> * User: `reg query HKEY_CURRENT_USER\Environment`
+
+## UNIX find equivalent
+
+```
+dir /s /b
+dir /s /b "%HOMEPATH%"
+dir /s /b "%HOMEPATH%" | findstr .html
+dir /s /b "%HOMEPATH%" | findstr /i .html
+```
+
+## OpenSSH sous Windows
+
+* OpenSSH for Windows: see [this link](http://sshwindows.sourceforge.net/)
+* Default installation directory: `"%PROGRAMFILES(X86)%\OpenSSH"`
+* Path to the SSH configuration files: `"%HOMEPATH%\.ssh"`
+
+> Useful [link](https://www.thewindowsclub.com/system-user-environment-variables-windows) for Windows environment variables.
 
