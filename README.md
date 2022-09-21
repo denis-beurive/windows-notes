@@ -36,7 +36,7 @@ set
 > * System: `reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"`
 > * User: `reg query HKEY_CURRENT_USER\Environment`
 
-## UNIX find equivalent
+## UNIX "find" equivalent
 
 ```
 dir /s /b
@@ -45,13 +45,19 @@ dir /s /b "%HOMEPATH%" | findstr .html
 dir /s /b "%HOMEPATH%" | findstr /i .html
 ```
 
-## UNIX cat equivalent
+## UNIX "cat" equivalent
 
 ```
 type <file name>
 ```
 
-## OpenSSH sous Windows
+## UNIX "rm -rf" equivalent
+
+```
+rmdir <directory path> /s /q
+```
+
+## OpenSSH for Windows
 
 * OpenSSH for Windows: see [this link](http://sshwindows.sourceforge.net/)
 * Default installation directory: `"%PROGRAMFILES(X86)%\OpenSSH"`
