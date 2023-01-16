@@ -57,6 +57,27 @@ type <file name>
 rmdir <directory path> /s /q
 ```
 
+## Delete all files excepts certain files
+
+```
+REM Delete all files except ".gitignore" and "clean.bat".
+
+echo off
+REM Prevent unexpected behaviour that may lead to the removal of all files
+REM including the ones that we want to keep.
+set PWD=%~dp0
+cd %PWD%
+
+for %%i in (*) do (
+    if not "%%i" == ".gitignore" (
+         if not "%%i" == "clean.bat" (
+            echo "Remove %%i"
+            del "%%i"
+         )
+    )
+)
+```
+
 ## OpenSSH for Windows
 
 * OpenSSH for Windows: see [this link](http://sshwindows.sourceforge.net/)
