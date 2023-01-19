@@ -78,6 +78,14 @@ for %%i in (*) do (
 )
 ```
 
+## Get the return value of a command
+
+```
+echo %errorlevel%
+```
+
+> Unix equivalent: `echo $?`
+
 ## OpenSSH for Windows
 
 * OpenSSH for Windows: see [this link](http://sshwindows.sourceforge.net/)
