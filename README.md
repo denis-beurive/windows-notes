@@ -86,6 +86,13 @@ echo %errorlevel%
 
 > Unix equivalent: `echo $?`
 
+## Load a password from a file
+
+```
+SET /p PASSWORD=<password.txt
+echo %PASSWORD%
+```
+
 ## OpenSSH for Windows
 
 * OpenSSH for Windows: see [this link](http://sshwindows.sourceforge.net/)
