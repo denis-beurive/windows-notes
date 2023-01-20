@@ -93,6 +93,14 @@ SET /p PASSWORD=<password.txt
 echo %PASSWORD%
 ```
 
+## Get the path to this script
+
+```
+SET PWD=%~dp0
+```
+
+> `PWD` is the path to a directory.
+
 ## OpenSSH for Windows
 
 * OpenSSH for Windows: see [this link](http://sshwindows.sourceforge.net/)
