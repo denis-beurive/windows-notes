@@ -27,6 +27,24 @@ GUI applications use the following code page:
 
 `1252` => `windows-1252` aka `ANSI Latin 1; Europe occidentale (Windows)`
 
+## Get/set the keyboard layout
+
+Get a textual description:
+
+    Get-WinUserLanguageList
+
+Or
+
+Get a numerical ID:
+
+    (Get-Culture).keyboardLayoutID
+
+> This ID is listed [here](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/windows-language-pack-default-values?view=windows-11).
+
+Set the layout:
+
+    Set-WinUserLanguageList -LanguageList fr-FR
+
 ## Show environment variables
 
 ```
