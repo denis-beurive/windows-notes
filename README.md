@@ -47,7 +47,7 @@ Set the layout:
 
 ## Show environment variables
 
-```
+```Batchfile
 set
 ```
 
@@ -56,7 +56,7 @@ set
 
 ## UNIX "find" equivalent
 
-```
+```Batchfile
 dir /s /b
 dir /s /b "%HOMEPATH%"
 dir /s /b "%HOMEPATH%" | findstr .html
@@ -71,13 +71,13 @@ type <file name>
 
 ## UNIX "rm -rf" equivalent
 
-```
+```Batchfile
 rmdir <directory path> /s /q
 ```
 
 ## Delete all files excepts certain files
 
-```
+```Batchfile
 REM Delete all files except ".gitignore" and "clean.bat".
 
 echo off
@@ -98,7 +98,7 @@ for %%i in (*) do (
 
 ## Get the return value of a command
 
-```
+```Batchfile
 echo %errorlevel%
 ```
 
@@ -106,18 +106,32 @@ echo %errorlevel%
 
 ## Load a password from a file
 
-```
+```Batchfile
 SET /p PASSWORD=<password.txt
 echo %PASSWORD%
 ```
 
 ## Get the path to this script
 
-```
+```Batchfile
 SET PWD=%~dp0
 ```
 
-> `PWD` is the path to a directory.
+> `PWD` is the path to the executed `.BAT` script's directory.
+
+## MSDOS colors
+
+![](images/dos-colors.png)
+
+Usage:
+
+```Batchfile
+IF not exist src\ (
+  echo %WARN%WARNING: no sub direcory "src" found under GOPATH.%END_WARN%
+)
+```
+
+> See: [https://gist.githubusercontent.com/mlocati/fdabcaeb8071d5c75a2d51712db24011/raw/b710612d6320df7e146508094e84b92b34c77d48/win10colors.cmd](https://gist.githubusercontent.com/mlocati/fdabcaeb8071d5c75a2d51712db24011/raw/b710612d6320df7e146508094e84b92b34c77d48/win10colors.cmd)
 
 ## OpenSSH for Windows
 
