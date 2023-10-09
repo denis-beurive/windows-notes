@@ -109,3 +109,18 @@ SET PWD=%~dp0
 
 > Useful [link](https://www.thewindowsclub.com/system-user-environment-variables-windows) for Windows environment variables.
 
+> Windows comes with OpenSSH preinstalled:
+> 
+> ```
+> C:>where ssh
+> C:\Windows\System32\OpenSSH\ssh.exe
+> ```
+
+## List open ports with the names of the associated process
+
+```
+netstat -aonb
+```
+
+
+
