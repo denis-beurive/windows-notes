@@ -154,5 +154,12 @@ IF not exist src\ (
 netstat -aonb
 ```
 
+## Select the keyboard language
+
+On a Windows keyboard: [Windows] + [Spacebar]
+
+Logitech MX-Keys: 
+
+![](images/mx-keys1.png)
 
 
