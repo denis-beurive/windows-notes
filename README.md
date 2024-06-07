@@ -154,5 +154,22 @@ IF not exist src\ (
 netstat -aonb
 ```
 
+## Find + grep équivalent
 
+Use PowerShell:
 
+    Get-Childitem –Path 'C:\Program Files\Microsoft Visual Studio' -Include link.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object FullName | Select-String -Pattern "Hostx64\\x64" -AllMatches
+
+## PowerShell environement variables
+
+* **print the value of a variable**: `$env:HOMEPATH\Documents`
+* **interpolation**: `ls $env:ProgramFiles` or `ls ${env:ProgramFiles(x86)}`
+* **print all variables**: `gci env:* | sort-object name`
+
+## PowerShell ls équivalent
+
+    ls | sort LastWriteTime -Descending | Select -First 5
+
+## PowerShell Unzip
+
+    Expand-Archive $env:HOMEPATH\Downloads\OpenSSH-Win64.zip -DestinationPath $env:HOMEPATH\Documents
