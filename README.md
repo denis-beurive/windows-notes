@@ -113,11 +113,42 @@ echo %PASSWORD%
 
 ## Get the path to this script
 
+`PWD` is the path to the executed `.BAT` script's directory.
+
 ```Batchfile
 SET PWD=%~dp0
 ```
 
-> `PWD` is the path to the executed `.BAT` script's directory.
+> Example: `C:\Users\denis.beurive\Documents\`
+
+If you want to remove the last "`\`"
+
+```Batchfile
+SET PWD=%~dp0
+SET PWD=%PWD:~0,-1%
+```
+
+> Example: `C:\Users\denis.beurive\Documents`
+
+## Get the current timestamp
+
+```Batchfile
+SET NOW=%date:~-4%%date:~3,2%%date:~0,2%%time:~0,2%%time:~3,2%%time:~6,2%
+```
+
+## Script to backup the current directory
+
+
+```Batchfile
+SET PWD=%~dp0
+SET PWD=%PWD:~0,-1%
+SET NOW=%date:~-4%%date:~3,2%%date:~0,2%%time:~0,2%%time:~3,2%%time:~6,2%
+SET ARCHIVE="%PWD%\..\project-%NOW%.tar.gz"
+
+cd "%PWD%"..
+tar --exclude=cmake-* --exclude=.git --exclude=.idea -czvf %ARCHIVE% "%PWD%\*"
+echo "Archive: " %ARCHIVE%
+```
 
 ## MSDOS colors
 
@@ -199,6 +230,12 @@ So, if you want to be very selective:
     powershell.exe -NoExit -ExecutionPolicy Bypass -File .\setup.ps1
 
 > Please note the use of the option "`-NoExit`".
+
+## Execute a command which path contains a space
+
+Example: 
+
+    & "C:\Program Files\CMake\bin\cmake-gui"
 
 ## Create a BAT file that opens the current directory with SublimeText 
 
