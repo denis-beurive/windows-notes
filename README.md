@@ -193,23 +193,38 @@ Logitech MX-Keys:
 
 ![](images/mx-keys1.png)
 
+## PoserShell
+
+Create an object and print its properties.
+
+```powsershell
+$xml = New-Object -TypeName XML
+$xml | Get-Member
+```
+
 ## Find + grep équivalent
 
 Use PowerShell:
 
-    Get-Childitem –Path 'C:\Program Files\Microsoft Visual Studio' -Include link.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object FullName | Select-String -Pattern "Hostx64\\x64" -AllMatches
+```powsershell
+Get-Childitem –Path 'C:\Program Files\Microsoft Visual Studio' -Include link.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object FullName | Select-String -Pattern "Hostx64\\x64" -AllMatches
+```
 
 But, be careful:
 
-    PS C:\Users\denis> Get-Childitem –Path 'C:\Program Files' -Include subl.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object FullName | Select-String -Pattern "\\subl.exe" -AllMatches
+```powsershell
+Get-Childitem –Path 'C:\Program Files' -Include subl.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object FullName | Select-String -Pattern "\\subl.exe" -AllMatches
 
-    @{FullName=C:\Program Files\Sublime Text\subl.exe}
+@{FullName=C:\Program Files\Sublime Text\subl.exe}
+```
 
 > Do you see the end of the line ?
 
 So, if you want to be very selective:
 
-    Get-Childitem –Path 'C:\Program Files' -Include subl.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object FullName | Select-String -Pattern "\\subl.exe\}?$" -AllMatches
+```powsershell
+Get-Childitem –Path 'C:\Program Files' -Include subl.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object FullName | Select-String -Pattern "\\subl.exe\}?$" -AllMatches
+```
 
 ## PowerShell environement variables
 
@@ -219,15 +234,20 @@ So, if you want to be very selective:
 
 ## PowerShell ls équivalent
 
-    ls | sort LastWriteTime -Descending | Select -First 5
+```powsershell
+ls | sort LastWriteTime -Descending | Select -First 5
+```
 
 ## PowerShell Unzip
 
-    Expand-Archive $env:HOMEPATH\Downloads\OpenSSH-Win64.zip -DestinationPath $env:HOMEPATH\Documents
-
+```powsershell
+Expand-Archive $env:HOMEPATH\Downloads\OpenSSH-Win64.zip -DestinationPath $env:HOMEPATH\Documents
+```
 ## Execute a PowerShell script that setups a terminal environment (equivalent to "source")
 
-    powershell.exe -NoExit -ExecutionPolicy Bypass -File .\setup.ps1
+```powsershell
+powershell.exe -NoExit -ExecutionPolicy Bypass -File .\setup.ps1
+```
 
 > Please note the use of the option "`-NoExit`".
 
@@ -235,11 +255,14 @@ So, if you want to be very selective:
 
 Example: 
 
-    & "C:\Program Files\CMake\bin\cmake-gui"
+```powsershell
+& "C:\Program Files\CMake\bin\cmake-gui"
+```
 
 ## Create a BAT file that opens the current directory with SublimeText 
 
-    SET PWD=%~dp0
+```Batchfile
+SET PWD=%~dp0
 
-    "C:\Program Files\Sublime Text\subl.exe" %PWD%
-
+"C:\Program Files\Sublime Text\subl.exe" %PWD%
+```
