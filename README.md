@@ -179,6 +179,32 @@ IF not exist src\ (
 > C:\Windows\System32\OpenSSH\ssh.exe
 > ```
 
+# OpenSSL for windows
+
+Download OpenSSL here: https://github.com/openssl/openssl?tab=readme-ov-file#download and https://kb.firedaemon.com/support/solutions/articles/4000121705
+
+
+> If you installed OpenSSL from [https://kb.firedaemon.com/support/solutions/articles/4000121705](https://kb.firedaemon.com/support/solutions/articles/4000121705), then you need to update the PATH environment variable (`C:\Program Files\FireDaemon OpenSSL 3\bin`)
+
+
+Encrypt (PowerShell):
+
+```poweshell
+$IN="/path/to/file"
+$OUT="${IN}.aes256"
+
+openssl aes-256-cbc -a -salt -pbkdf2 -in "${IN}" -out "${OUT}"
+```
+
+Decrypt (PowerShell):
+
+```poweshell
+$IN="/path/to/file.aes256"
+$OUT="${IN}".Substring(0, $IN.Length - 7)
+
+openssl aes-256-cbc -d -a -pbkdf2 -in "${IN}" -out "${OUT}"
+```
+
 ## List open ports with the names of the associated process
 
 ```
