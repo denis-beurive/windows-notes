@@ -240,17 +240,19 @@ But, be careful:
 
 ```powsershell
 Get-Childitem –Path 'C:\Program Files' -Include subl.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object FullName | Select-String -Pattern "\\subl.exe" -AllMatches
-
-@{FullName=C:\Program Files\Sublime Text\subl.exe}
 ```
 
+> Result: `@{FullName=C:\Program Files\Sublime Text\subl.exe}`
+>
 > Do you see the end of the line ?
 
 So, if you want to be very selective:
 
 ```powsershell
-Get-Childitem –Path 'C:\Program Files' -Include subl.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object FullName | Select-String -Pattern "\\subl.exe\}?$" -AllMatches
+Get-Childitem –Path 'C:\Program Files' -Include subl.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
 ```
+
+> Result: `C:\Program Files\Sublime Text\subl.exe`
 
 ## PowerShell environement variables
 
@@ -292,3 +294,11 @@ SET PWD=%~dp0
 
 "C:\Program Files\Sublime Text\subl.exe" %PWD%
 ```
+
+## Get the short path
+
+```Batchfile
+cmd /c for %A in ("C:\Program Files (x86)") do @echo %~sA
+```
+
+> Result: `C:\PROGRA~2`
