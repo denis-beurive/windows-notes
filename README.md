@@ -136,18 +136,28 @@ SET PWD=%PWD:~0,-1%
 SET NOW=%date:~-4%%date:~3,2%%date:~0,2%%time:~0,2%%time:~3,2%%time:~6,2%
 ```
 
+Or, with Powershell:
+
+```powershell
+powershell -command "Get-Date -Format \"yyyyMMdd-HHmm\"" > file.tmp
+set /p NOW=<file.tmp
+```
+
 ## Script to backup the current directory
 
 
 ```Batchfile
 SET PWD=%~dp0
 SET PWD=%PWD:~0,-1%
-SET NOW=%date:~-4%%date:~3,2%%date:~0,2%%time:~0,2%%time:~3,2%%time:~6,2%
-SET ARCHIVE="%PWD%\..\project-%NOW%.tar.gz"
+powershell -command "Get-Date -Format \"yyyyMMdd-HHmm\"" > file.tmp
+set /p NOW=<file.tmp
+DEL file.tmp
+SET ARCHIVE="%PWD%\..\backup-%NOW%.tar.gz"
 
 cd "%PWD%"..
-tar --exclude=cmake-* --exclude=.git --exclude=.idea -czvf %ARCHIVE% "%PWD%\*"
+tar --exclude=containers/jq-windows-amd64.exe --exclude=cmake-* --exclude=.git --exclude=.gitignore --exclude=.idea -czvf %ARCHIVE% "%PWD%\*"
 echo "Archive: " %ARCHIVE%
+
 ```
 
 ## MSDOS colors
