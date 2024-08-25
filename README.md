@@ -145,7 +145,6 @@ set /p NOW=<file.tmp
 
 ## Script to backup the current directory
 
-
 ```Batchfile
 SET PWD=%~dp0
 SET PWD=%PWD:~0,-1%
@@ -236,6 +235,35 @@ Create an object and print its properties.
 ```powsershell
 $xml = New-Object -TypeName XML
 $xml | Get-Member
+```
+
+## grep equivalent
+
+```powsershell
+Select-String .\all_registry.reg -Pattern "Sublime Text" | Select-Object  -Property *
+
+...
+IgnoreCase : True
+LineNumber : 3106264
+Line       : "C:\\Users\\denis\\AppData\\Local\\Temp\\Sublime Text Update Installer.exe"=hex:53,\
+Filename   : all_registry.reg
+Path       : C:\Users\denis\Desktop\all_registry.reg
+Pattern    : Sublime Text
+Context    :
+Matches    : {0}
+...
+```
+
+Print the line number followed by the line's content:
+
+```powsershell
+Select-String .\all_registry.reg -Pattern "Sublime Text" | Select-Object LineNumber,Line
+```
+
+Print only the line's content:
+
+```powsershell
+Select-String .\all_registry.reg -Pattern "Sublime Text" | Select-Object Line
 ```
 
 ## Find + grep équivalent
