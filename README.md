@@ -377,3 +377,24 @@ Interface : 172.29.96.1 --- 0x18
   255.255.255.255       ff-ff-ff-ff-ff-ff     statique
 ```
 
+## Delete all under a given directory
+
+This script can be useful if you have an extremely deep directory tree.
+
+```python
+import os
+from typing import Final
+
+root_directory: Final[str] = "C:\\Users\\denis\\Documents\\github\\java-by-the-command-line\\example-15\\temp\\images"
+
+def explore_tree(root: str) -> None:
+    for path, _, files in os.walk(root, topdown=False):
+        for name in files:
+            p: str = os.path.join(path, name)
+            print(f"del {p}")
+            os.remove(f"{os.path.join(path, name)}")
+        print(f"\nremove {path}\n")
+        os.rmdir(path)
+
+explore_tree(root_directory)
+```
