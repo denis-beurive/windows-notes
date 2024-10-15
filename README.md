@@ -340,3 +340,39 @@ cmd /c for %A in ("C:\Program Files (x86)") do @echo %~sA
 ```
 
 > Result: `C:\PROGRA~2`
+
+## List network interfaces
+
+```
+apr /a
+```
+
+Example:
+
+
+```
+Interface : 192.168.1.155 --- 0xe
+  Adresse Internet      Adresse physique      Type
+  192.168.1.172         28-73-f6-21-90-a3     dynamique
+  192.168.1.254         50-6f-0c-1f-3d-8c     dynamique
+  192.168.1.255         ff-ff-ff-ff-ff-ff     statique
+  224.0.0.2             01-00-5e-00-00-02     statique
+  224.0.0.22            01-00-5e-00-00-16     statique
+  224.0.0.251           01-00-5e-00-00-fb     statique
+  224.0.0.252           01-00-5e-00-00-fc     statique
+  239.255.255.250       01-00-5e-7f-ff-fa     statique
+  255.255.255.255       ff-ff-ff-ff-ff-ff     statique
+
+Interface : 172.29.96.1 --- 0x18
+  Adresse Internet      Adresse physique      Type
+  172.29.103.131        00-15-5d-01-9b-02     statique
+  172.29.105.66         00-15-5d-01-9b-01     statique
+  172.29.111.255        ff-ff-ff-ff-ff-ff     statique
+  224.0.0.2             01-00-5e-00-00-02     statique
+  224.0.0.22            01-00-5e-00-00-16     statique
+  224.0.0.251           01-00-5e-00-00-fb     statique
+  224.0.0.252           01-00-5e-00-00-fc     statique
+  239.255.255.250       01-00-5e-7f-ff-fa     statique
+  255.255.255.255       ff-ff-ff-ff-ff-ff     statique
+```
+
