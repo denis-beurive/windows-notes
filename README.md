@@ -156,8 +156,9 @@ SET ARCHIVE="%PWD%\..\backup-%NOW%.tar.gz"
 cd "%PWD%"..
 tar --exclude=containers/jq-windows-amd64.exe --exclude=cmake-* --exclude=.git --exclude=.gitignore --exclude=.idea -czvf %ARCHIVE% "%PWD%\*"
 echo "Archive: " %ARCHIVE%
-
 ```
+
+> The version of TAR used: `bsdtar 3.5.2 - libarchive 3.5.2 zlib/1.2.5.f-ipp`.
 
 ## MSDOS colors
 
